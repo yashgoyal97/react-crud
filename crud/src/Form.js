@@ -4,14 +4,21 @@ export default function Form(props) {
         props.handleUpdateState({
             ...props.employeeObj,
             [e.target.name]: e.target.value
-        }, props.isUpdateForm);
+        }, props.isUpdateForm, false);
+    }
+
+    function handleEmployeeUpdate() {
+        props.handleUpdateState({
+            name: "",
+            empId: ""
+        }, false, true);
     }
 
     function resetEmployeeObject() {
         props.handleUpdateState({
             name: "",
             empId: ""
-        }, false);
+        }, false, false);
     }
 
     function submitForm(e) {
@@ -37,7 +44,7 @@ export default function Form(props) {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Success: ', data);
-                    resetEmployeeObject();
+                    handleEmployeeUpdate();
                 })
                 .catch((error) => {
                     console.log('Error: ', error);
@@ -54,6 +61,7 @@ export default function Form(props) {
             <input id="name" name="name" placeholder="Enter name" value={props.employeeObj.name} onChange={handleInputChange} />
             <input id="empId" name="empId" placeholder="Enter employee ID" value={props.employeeObj.empId} onChange={handleInputChange} />
             <button onClick={submitForm}>{buttonText}</button>
+            <button onClick={resetEmployeeObject}>Clear</button>
         </form>
     );
 }
