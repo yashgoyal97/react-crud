@@ -1,3 +1,5 @@
+import './Form.css';
+
 export default function Form(props) {
 
     function handleInputChange(e) {
@@ -58,10 +60,12 @@ export default function Form(props) {
 
     return(
         <form>
-            <input id="name" name="name" placeholder="Enter name" value={props.employeeObj.name} onChange={handleInputChange} />
-            <input id="empId" name="empId" placeholder="Enter employee ID" value={props.employeeObj.empId} onChange={handleInputChange} />
-            <button onClick={submitForm}>{buttonText}</button>
-            <button onClick={resetEmployeeObject}>Clear</button>
+            <input id="name" name="name" placeholder="Enter Name" value={props.employeeObj.name} onChange={handleInputChange} />
+            <input id="empId" name="empId" placeholder="Enter Employee ID" value={props.employeeObj.empId} onChange={handleInputChange} />
+            <div>
+                <button className='form-button' onClick={submitForm}>{buttonText}</button>
+                <button className='form-button' onClick={resetEmployeeObject}>Reset</button>
+            </div>
         </form>
     );
 }

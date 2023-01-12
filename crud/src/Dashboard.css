@@ -1,0 +1,19 @@
+#dashboardContainer {
+    margin: 20px 30px;
+    padding: 5px 20px 20px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+table, th, td{
+    border: solid 1px;
+    background-color: white;
+}
+
+th, td {
+    padding: 2px;
+}
+
+td > button {
+    margin: 1px;
+}

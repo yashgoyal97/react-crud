@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdDeleteOutline, MdOutlineEdit } from 'react-icons/md';
+import './Dashboard.css';
 
 export default class Dashboard extends React.Component {
 
@@ -27,7 +29,10 @@ export default class Dashboard extends React.Component {
             .then((response) => response.json())
             .then(() => {
                 console.log('Record deleted successfully');
-                this.props.updateEmployeeData(emp, false, true);
+                this.props.updateEmployeeData({
+                    name: "",
+                    empId: ""
+                }, false, true);
             })
             .catch((error) => {
                 console.log('Error: ', error);
@@ -46,8 +51,8 @@ export default class Dashboard extends React.Component {
                         <td>{emp.name}</td>
                         <td>{emp.empId}</td>
                         <td>
-                            <button onClick={() => this.deleteEmployeeData(emp)}>Delete</button>
-                            <button onClick={() => this.updateEmployeeData(emp)}>Update</button>
+                            <button onClick={() => this.deleteEmployeeData(emp)}><MdDeleteOutline /></button>
+                            <button onClick={() => this.updateEmployeeData(emp)}><MdOutlineEdit /></button>
                         </td>
                     </tr>
                 );
@@ -72,10 +77,11 @@ export default class Dashboard extends React.Component {
         }
 
         return(
-            <>
+            <div id='dashboardContainer'>
                 <h1>Dashboard</h1>
+                <hr />
                 { table }
-            </>
+            </div>
             
         );
     }
